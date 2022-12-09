@@ -1,0 +1,36 @@
+<ion-content >
+    <ion-img [src]="imageUrl"  class="mx-auto my-10"></ion-img>
+
+   <form [formGroup]="loginForm" class="p-2">
+  
+    <div class="form-group my-7">
+      <ion-label>Email or Phone No</ion-label>
+      <ion-item  lines="full">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-input type="email" placeholder="Enter email or phone no" formControlName="email"></ion-input>
+      </ion-item>
+      
+      <ion-label color="danger" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.required">Email is required</ion-label>
+      <ion-label color="danger" *ngIf="loginForm.get('email').touched && loginForm.get('email').errors?.email">Email must be valid</ion-label>
+    </div>
+    <div class="form-group my-7">
+     
+      <div class="flex flex-row justify-between">
+        <ion-label slot="start">Password</ion-label>
+        <ion-label  color="primary" routerLink="/register" class="cursor-pointer">Forgot Password?</ion-label>
+      </div>
+      <ion-item lines="full">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+      <ion-input type="password" placeholder="Enter password" formControlName="password"></ion-input>
+      </ion-item>
+    </div>
+           
+    <ion-button routerLink="/home" color="primary" expand="full" [disabled]="!loginForm.valid">Login</ion-button>
+    <div class="flex flex-col">
+      <ion-label color="primary" class="m-auto my-2"><span class="text-slate-500 text-sm normal-case">Don't have any account?</span><span routerLink="/register">Sign Up</span></ion-label>
+      <ion-label color="primary" class="m-auto my-2"><span class="text-slate-500 text-sm normal-case" (click)="openCamera()">Open Camera</span></ion-label>
+      <ion-label color="primary" class="m-auto text-xl font-medium" routerLink="/register">Get Instant Rate</ion-label>
+    </div>
+      
+    </form> 
+</ion-content>
